@@ -7,9 +7,7 @@ require_once __DIR__ . '/../../middleware/auth.php';
  $db = Database::getInstance()->getConnection();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $stmt = $db->prepare(
-        'SELECT id, username, email, avatar, bio, phone, storage_used, created_at FROM users WHERE id = ?'
-    );
+    $stmt = $db->prepare('SELECT id, username, email, avatar, bio, phone, storage_used, created_at FROM users WHERE id = ?');
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
 
